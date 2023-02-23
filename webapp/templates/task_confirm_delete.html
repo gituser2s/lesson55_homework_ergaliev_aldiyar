@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Task delete{% endblock %}
+{% block menu %}
+    <a href="{% url 'task_add' %}">Добавить</a>
+    <a href="{% url 'task_update' task.pk %}">Обновить</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Вы точно хотите удалить статью?</h1>
+        <p>Заголовок: {{ task.title }}</p>
+        <p>Описание: {{ task.description }}</p>
+        <form action="{% url 'confirm_delete' task.pk%}" method="post">
+            {% csrf_token %}
+            <p><input type="submit" value="Удалить"></p>
+            <p><a href="{% url 'index' %}">Отмена</a></p>
+        </form>
+    </div>
+{% endblock %}
