@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Задача{% endblock %}
+{% block menu %}
+    <a href="{% url 'task_add' %}">Добавить</a>
+    <a href="{% url 'task_update' task.pk%}">Обновить</a>
+    <a href="{% url 'task_delete' task.pk%}">Удалить</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Задание</h1>
+        <p>Заголовок: {{ task.title }}</p>
+        <p>Описание: {{ task.description }}</p>
+        <p>Подробнее: {{ task.detailed_description }}</p>
+        <p>Статус: {{ task.status }}</p>
+        <p>Дедлайн: {{ task.date }}</p>
+        <p>Дата создания: {{ task.created_at }}</p>
+    </div>
+{% endblock %}
